@@ -1,0 +1,238 @@
+/* static/style.css */
+
+/* Global Reset and Typography */
+:root {
+    --dark-bg: #1e1e1e;
+    --content-bg: #2a2a2a;
+    --sidebar-bg: #242424;
+    --text-color: #e0e0e0;
+    --primary-color: #4CAF50; /* Green for success/actions */
+    --danger-color: #ff5555; /* Red for deletion/danger */
+    --warning-color: #f7b731; /* Yellow for low stock */
+    --border-color: #383838;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* --- Layout --- */
+.main-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+    width: 250px;
+    background-color: var(--sidebar-bg);
+    padding: 20px;
+    border-right: 1px solid var(--border-color);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.logo-icon {
+    margin-right: 10px;
+    font-size: 1.8rem;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav a {
+    display: block;
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 10px 0;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+nav a:hover, nav a.active {
+    background-color: var(--content-bg);
+    color: var(--primary-color);
+}
+
+/* --- Main Content --- */
+.content-area {
+    flex-grow: 1;
+    padding: 20px 40px;
+    background-color: var(--content-bg);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 30px;
+}
+
+/* --- Buttons and Forms --- */
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    transition: opacity 0.2s;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--dark-bg);
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.85rem;
+}
+
+.btn-edit {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.85rem;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+input[type="text"], 
+input[type="number"] {
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+form button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* --- Summary Cards --- */
+.summary-cards {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.card {
+    background-color: var(--sidebar-bg);
+    padding: 20px;
+    border-radius: 8px;
+    flex: 1;
+    border: 1px solid var(--border-color);
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #999;
+}
+
+.card-value {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.card-low-stock {
+    color: var(--danger-color);
+}
+.card-total-value {
+    color: var(--primary-color);
+}
+.card-total-products {
+    color: var(--warning-color);
+}
+
+
+/* --- Table Styling (Inventory List) --- */
+.inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.inventory-table th, .inventory-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.inventory-table th {
+    background-color: #353535;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    color: #bbb;
+}
+
+.inventory-table tr:hover {
+    background-color: #313131;
+}
+
+.low-stock-row {
+    background-color: rgba(255, 85, 85, 0.1); /* Light red tint */
+}
+
+/* --- Flash Messages --- */
+.flash-messages {
+    margin-bottom: 20px;
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.alert-success {
+    background-color: #2e593c;
+    color: #d4edda;
+}
+
+.alert-danger {
+    background-color: #722f36;
+    color: #f8d7da;
+}
+
+.alert-warning {
+    background-color: #7a632e;
+    color: #fff3cd;
+}

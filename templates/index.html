@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% set low_stock_threshold = inventory_manager.LOW_STOCKTHRESHOLD %}
+
+{% block content %}
+    <div class="summary-cards">
+        <div class="card">
+            <h3>Total Value:</h3>
+            <div class="card-value card-total-value">Rs{{ "%.2f"|format(total_value) }}</div>
+        </div>
+        <div class="card">
+            <h3>Low Stock Items ( < {{ low_stock_threshold }})</h3>
+            <div class="card-value card-low-stock">{{ low_stock_count }}</div>
+        </div>
+        <div class="card">
+            <h3>Total Products</h3>
+            <div class="card-value card-total-products">{{ products|length }}</div>
+        </div>
+    </div>
+
+    <h2>Inventory List</h2>
+    <table class="inventory-table">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Price (Rs)</th>
+                <th>Stock</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr {% if product.stock < low_stock_threshold %}class="low-stock-row"{% endif %}>
+                <td>{{ product.item_code }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ "%.2f"|format(product.price) }}</td>
+                <td>
+                    {{ product.stock }}
+                    {% if product.stock < low_stock_threshold %}
+                        <span style="color: var(--danger-color); font-size: 0.8rem; margin-left: 5px;">(LOW)</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{{ url_for('update_product_route', item_code=product.item_code) }}" class="btn btn-edit">Edit</a>
+                    <a href="{{ url_for('delete_product_route', item_code=product.item_code) }}" 
+                       onclick="return confirm('Are you sure you want to delete {{ product.name }}?');" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

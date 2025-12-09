@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block header_title %}Update Product: {{ product.name }}{% endblock %}
+
+{% block content %}
+    <form method="POST">
+        <h2>Stock Update</h2>
+        <p>Current Stock: <b style="color: var(--primary-color);">{{ product.stock }}</b></p>
+        <label for="stock">New Stock Level:</label><br>
+        <input type="number" id="stock" name="stock" min="0" placeholder="Enter new stock (Leave blank to keep current)"><br><br>
+
+        <h2>Price Update</h2>
+        <p>Current Price: <b style="color: var(--primary-color);">Rs{{ "%.2f"|format(product.price) }}</b></p>
+        <label for="price">New Price (Rs):</label><br>
+        <input type="number" id="price" name="price" step="0.01" min="0.01" placeholder="Enter new price (Leave blank to keep current)"><br><br>
+
+        <button type="submit">✏️ Update Details</button>
+    </form>
+{% endblock %}
