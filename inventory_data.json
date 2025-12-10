@@ -16,5 +16,17 @@
         "price": 10.0,
         "stock": 500,
         "item_code": "ITM003"
+    },
+    {
+        "name": "pencil",
+        "price": 10.0,
+        "stock": 200,
+        "item_code": "ITM004"
+    },
+    {
+        "name": "shampoo",
+        "price": 200.0,
+        "stock": 100,
+        "item_code": "ITM005"
     }
 ]
